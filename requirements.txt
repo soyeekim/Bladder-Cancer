@@ -1,0 +1,22 @@
+# nnU-Net v2 3D segmentation 학습용 (docker/Dockerfile 에서 설치).
+# 베이스 이미지가 nvidia/cuda:12.2.2 (PyTorch 미포함) 이므로 여기서 PyTorch 를 CUDA 12.1 wheel 로 설치한다.
+# (cu121 wheel 은 CUDA 12.x 드라이버에서 동작. A6000(Ampere) 포함, 컴파일 불필요)
+--extra-index-url https://download.pytorch.org/whl/cu121
+torch==2.5.1
+torchvision==0.20.1
+
+# nnunetv2==2.8.1  ← PyPI 대신 프로젝트 안의 소스(nnUNet/, dynamic-network-architectures/)를 Dockerfile 에서 -e 로 설치
+
+# 이 프로젝트의 전처리/QC 스크립트(scripts/*.py)가 쓰는 라이브러리
+nibabel>=5.2,<6
+pydicom>=3.0,<4
+SimpleITK>=2.3,<3
+scipy>=1.11,<2
+matplotlib>=3.8,<4
+pillow>=10,<12
+pandas>=2.0,<3
+tqdm>=4.66
+
+# 압축 DICOM(JPEG Lossless) 디코더 — scripts/inspect_segmentation.py 가 필요로 함
+pylibjpeg>=2,<3
+pylibjpeg-libjpeg>=2,<2.3

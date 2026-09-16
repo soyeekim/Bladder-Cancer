@@ -1,0 +1,9 @@
+data/
+outputs/
+docker/
+dynamic-network-architectures/
+reports/
+nnUNet/
+tools/
+__pycache__/
+*.pyc

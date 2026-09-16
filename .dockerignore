@@ -1,0 +1,7 @@
+data/
+outputs/
+reports/
+tools/
+nnUNet/.git
+dynamic-network-architectures/.git
+**/__pycache__/
